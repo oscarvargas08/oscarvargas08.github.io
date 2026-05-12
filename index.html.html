@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGROCONNECT | Comercio Agrícola Directo · Aquitania, Boyacá</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --green-900: #0d3d1f;
+  --green-800: #1a5e35;
+  --green-700: #1e7040;
+  --green-600: #2a8c52;
+  --green-400: #4ab86e;
+  --green-200: #b4dfca;
+  --green-100: #e1f2e9;
+  --gold-500: #e8a020;
+  --gold-400: #f5b942;
+  --gold-100: #fef5e0;
+  --terra: #c4622d;
+  --terra-100: #fbe9df;
+  --cream: #f4efe6;
+  --parchment: #faf8f4;
+  --white: #ffffff;
+  --text-dark: #1a2e1a;
+  --text-mid: #3d5c3d;
+  --text-muted: #7a917a;
+  --border: #dce8dc;
+  --shadow-sm: 0 2px 8px rgba(13,61,31,.07);
+  --shadow-md: 0 6px 24px rgba(13,61,31,.11);
+  --shadow-lg: 0 16px 48px rgba(13,61,31,.16);
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-pill: 100px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--green-200); border-radius: 4px; }
+
+/* ══════════════════════════════════════════════════
+   LOGIN SCREEN
+══════════════════════════════════════════════════ */
+#loginScreen {
+  position: fixed; inset: 0; z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--green-900);
+  overflow: hidden;
+}
+
+.login-bg-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(74,184,110,.18) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(232,160,32,.12) 0%, transparent 50%);
+}
+
+.login-bg-art {
+  position: absolute; right: -60px; bottom: -80px;
+  font-size: 320px; opacity: .04; line-height: 1;
+  user-select: none; pointer-events: none;
+}
+
+.login-card {
+  position: relative; z-index: 2;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  width: min(92%, 420px);
+  box-shadow: var(--shadow-lg);
+  animation: loginReveal .5s cubic-bezier(.22,1,.36,1) both;
+}
+
+@keyframes loginReveal {
+  from { opacity:0; transform: translateY(24px) scale(.97); }
+  to { opacity:1; transform: translateY(0) scale(1); }
+}
+
+.login-logo {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px;
+}
+
+.login-logo-icon {
+  width: 52px; height: 52px;
+  background: linear-gradient(135deg, var(--green-700), var(--green-600));
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 12px rgba(30,112,64,.3);
+}
+
+.login-logo-text h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 900; font-size: 1.5rem;
+  color: var(--green-800); letter-spacing: -0.5px;
+}
+.login-logo-text p {
+  font-size: .72rem; color: var(--text-muted);
+  font-weight: 500; letter-spacing: .5px; text-transform: uppercase;
+}
+
+.login-card h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--text-dark); margin-bottom: 6px;
+}
+.login-card > p {
+  color: var(--text-muted); font-size: .875rem; margin-bottom: 28px;
+}
+
+.form-field {
+  position: relative; margin-bottom: 14px;
+}
+.form-field i {
+  position: absolute; left: 16px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted); font-size: .9rem;
+}
+.form-field input {
+  width: 100%; padding: 13px 16px 13px 42px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-family: inherit; font-size: .9rem;
+  color: var(--text-dark);
+  transition: border-color .2s, box-shadow .2s;
+  background: var(--parchment);
+  outline: none;
+}
+.form-field input:focus {
+  border-color: var(--green-600);
+  box-shadow: 0 0 0 3px rgba(42,140,82,.12);
+  background: var(--white);
+}
+
+.btn-primary {
+  width: 100%; padding: 14px;
+  background: linear-gradient(135deg, var(--green-700), var(--green-600));
+  color: white; border: none; border-radius: var(--radius-pill);
+  font-family: inherit; font-size: .95rem; font-weight: 700;
+  cursor: pointer; letter-spacing: .3px;
+  transition: transform .15s, box-shadow .15s, background .2s;
+  box-shadow: 0 4px 16px rgba(30,112,64,.3);
+  margin-top: 4px;
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(30,112,64,.35);
+  background: linear-gradient(135deg, var(--green-800), var(--green-700));
+}
+.btn-primary:active { transform: translateY(0); }
+
+.error-msg {
+  color: #c0392b; font-size: .8rem;
+  margin-top: 10px; text-align: center; min-height: 18px;
+}
+
+.login-demo {
+  margin-top: 20px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: .78rem; color: var(--text-muted); text-align: center;
+}
+.login-demo strong { color: var(--green-700); }
+
+/* ══════════════════════════════════════════════════
+   APP WRAPPER
+══════════════════════════════════════════════════ */
+#app { display: none; min-height: 100vh; flex-direction: column; }
+
+/* ─── TOP BAR ─── */
+.top-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 28px;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.top-bar-brand {
+  display: flex; align-items: center; gap: 10px;
+}
+.top-bar-brand .brand-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--green-700), var(--green-600));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: white;
+}
+.top-bar-brand h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.25rem; font-weight: 900;
+  color: var(--green-800); letter-spacing: -0.3px;
+}
+.top-bar-brand span {
+  font-size: .72rem; color: var(--text-muted);
+  font-weight: 500; background: var(--green-100);
+  padding: 2px 8px; border-radius: 20px;
+  color: var(--green-700);
+}
+
+.top-bar-right {
+  display: flex; align-items: center; gap: 16px;
+}
+
+.notification-btn {
+  position: relative;
+  background: var(--cream); border: none;
+  width: 38px; height: 38px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-mid); font-size: .9rem;
+  transition: background .2s;
+}
+.notification-btn:hover { background: var(--green-100); color: var(--green-700); }
+.notif-dot {
+  position: absolute; top: 7px; right: 7px;
+  width: 8px; height: 8px;
+  background: var(--gold-500); border-radius: 50%;
+  border: 2px solid white;
+}
+
+.user-chip {
+  display: flex; align-items: center; gap: 10px;
+  padding: 5px 14px 5px 5px;
+  background: var(--cream); border-radius: var(--radius-pill);
+  cursor: default;
+}
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--green-700), var(--green-400));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-size: .85rem;
+}
+.user-chip span { font-size: .85rem; font-weight: 600; color: var(--text-dark); }
+
+.btn-logout {
+  background: transparent; border: 1.5px solid var(--border);
+  padding: 6px 16px; border-radius: var(--radius-pill);
+  font-family: inherit; font-size: .8rem; font-weight: 600;
+  color: var(--text-muted); cursor: pointer;
+  transition: .2s;
+}
+.btn-logout:hover { background: #fee; border-color: #fbb; color: #c0392b; }
+
+/* ─── HERO HEADER ─── */
+.hero-header {
+  background: linear-gradient(135deg, var(--green-900) 0%, var(--green-800) 60%, var(--green-700) 100%);
+  padding: 48px 40px 44px;
+  position: relative; overflow: hidden;
+}
+
+.hero-bg-pattern {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(circle at 5% 60%, rgba(74,184,110,.18) 0%, transparent 45%),
+    radial-gradient(circle at 95% 10%, rgba(232,160,32,.12) 0%, transparent 45%),
+    radial-gradient(circle at 60% 90%, rgba(13,61,31,.5) 0%, transparent 50%);
+}
+.hero-bg-art {
+  position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
+  font-size: 260px; opacity: .04; pointer-events: none; user-select: none;
+  line-height: 1;
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  max-width: 1100px;
+}
+
+.hero-text { max-width: 640px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  padding: 5px 14px; border-radius: var(--radius-pill);
+  font-size: .7rem; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: rgba(255,255,255,.75);
+  margin-bottom: 18px;
+}
+
+.hero-header h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800; color: white;
+  line-height: 1.1; letter-spacing: -1.5px;
+  margin-bottom: 0;
+}
+.hero-header h2 em {
+  font-style: normal; display: block;
+  background: linear-gradient(90deg, var(--gold-400), var(--gold-500));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-divider {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--gold-400), transparent);
+  border-radius: 2px;
+  margin: 20px 0;
+}
+
+.hero-header p {
+  color: rgba(255,255,255,.72);
+  font-size: .925rem;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 520px;
+}
+
+.hero-stats {
+  display: flex; gap: 28px; margin-top: 28px;
+}
+.hero-stat { text-align: left; }
+.hero-stat-value {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.5rem; font-weight: 800; color: var(--gold-400);
+  line-height: 1;
+}
+.hero-stat-label {
+  font-size: .7rem; font-weight: 600; color: rgba(255,255,255,.5);
+  text-transform: uppercase; letter-spacing: .5px; margin-top: 3px;
+}
+
+.hero-aside {
+  display: flex; flex-direction: column; gap: 10px;
+  align-items: flex-end;
+}
+.hero-aside-card {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius-sm);
+  padding: 12px 18px;
+  display: flex; align-items: center; gap: 10px;
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+.hero-aside-card i { color: var(--gold-400); font-size: .85rem; }
+.hero-aside-card span { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.85); }
+
+.badge-row {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border-radius: var(--radius-pill);
+  font-size: .75rem; font-weight: 600;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.18);
+  color: rgba(255,255,255,.9);
+}
+
+@media (max-width: 680px) {
+  .hero-header { padding: 32px 20px 30px; }
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-aside { display: none; }
+  .hero-stats { gap: 20px; }
+  .hero-stat-value { font-size: 1.2rem; }
+}
+.badge-gold {
+  background: var(--gold-400); color: var(--green-900);
+  border-color: var(--gold-400);
+}
+
+/* ─── PRICE TICKER ─── */
+.price-ticker {
+  background: var(--green-900);
+  padding: 8px 0;
+  overflow: hidden;
+  border-bottom: 2px solid var(--gold-500);
+}
+.ticker-track {
+  display: flex; gap: 48px;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap;
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .78rem; font-weight: 600;
+  color: rgba(255,255,255,.85);
+}
+.ticker-item .t-name { color: var(--gold-400); }
+.ticker-item .t-up { color: #4ab86e; }
+.ticker-item .t-down { color: #e57373; }
+
+/* ─── NAV TABS ─── */
+.nav-tabs {
+  background: var(--white);
+  padding: 10px 20px;
+  display: flex; gap: 4px; flex-wrap: nowrap;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+  -ms-overflow-style: none; scrollbar-width: none;
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px;
+  border: none; background: transparent;
+  border-radius: var(--radius-pill);
+  font-family: inherit; font-size: .82rem; font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer; white-space: nowrap;
+  transition: all .2s; position: relative;
+}
+.nav-tab i { font-size: .85rem; }
+.nav-tab:hover { background: var(--green-100); color: var(--green-700); }
+.nav-tab.active {
+  background: var(--green-800); color: white;
+  box-shadow: 0 4px 12px rgba(26,94,53,.3);
+}
+
+/* ─── MAIN CONTENT ─── */
+.main-content {
+  flex: 1;
+  padding: 28px 24px;
+  max-width: 1320px; margin: 0 auto; width: 100%;
+}
+
+.panel { display: none; animation: panelIn .25s cubic-bezier(.22,1,.36,1) both; }
+.panel.active-panel { display: block; }
+@keyframes panelIn {
+  from { opacity:0; transform: translateY(12px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.card-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--text-dark); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-title i { color: var(--green-600); font-size: 1rem; }
+
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+
+/* ─── KPI CARDS ─── */
+.kpi-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: relative; overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.kpi-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+
+.kpi-icon {
+  width: 48px; height: 48px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; margin-bottom: 14px;
+}
+.kpi-icon.green { background: var(--green-100); color: var(--green-700); }
+.kpi-icon.gold { background: var(--gold-100); color: var(--gold-500); }
+.kpi-icon.terra { background: var(--terra-100); color: var(--terra); }
+.kpi-icon.blue { background: #e8f0fe; color: #3b6fd4; }
+
+.kpi-value {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 2rem; font-weight: 900;
+  color: var(--text-dark); line-height: 1;
+  margin-bottom: 4px;
+}
+.kpi-label {
+  font-size: .8rem; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px;
+}
+.kpi-trend {
+  position: absolute; top: 22px; right: 22px;
+  font-size: .75rem; font-weight: 700;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+}
+.kpi-trend.up { background: var(--green-100); color: var(--green-700); }
+.kpi-trend.new { background: var(--gold-100); color: var(--gold-500); }
+
+/* ─── FORMS ─── */
+.form-group { margin-bottom: 14px; }
+.form-group label {
+  display: block; font-size: .8rem; font-weight: 600;
+  color: var(--text-mid); margin-bottom: 5px;
+  text-transform: uppercase; letter-spacing: .4px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 11px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: inherit; font-size: .9rem;
+  color: var(--text-dark); background: var(--parchment);
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--green-600);
+  box-shadow: 0 0 0 3px rgba(42,140,82,.1);
+  background: var(--white);
+}
+.form-group textarea { resize: vertical; min-height: 80px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 22px; border: none; border-radius: var(--radius-pill);
+  font-family: inherit; font-size: .875rem; font-weight: 700;
+  cursor: pointer; transition: all .2s; white-space: nowrap;
+}
+.btn-green {
+  background: linear-gradient(135deg, var(--green-700), var(--green-600));
+  color: white;
+  box-shadow: 0 3px 12px rgba(26,94,53,.25);
+}
+.btn-green:hover { background: linear-gradient(135deg, var(--green-800), var(--green-700)); transform: translateY(-1px); }
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-500), var(--gold-400));
+  color: var(--green-900);
+  box-shadow: 0 3px 12px rgba(232,160,32,.25);
+}
+.btn-gold:hover { transform: translateY(-1px); }
+.btn-outline {
+  background: transparent; border: 1.5px solid var(--border);
+  color: var(--text-mid);
+}
+.btn-outline:hover { background: var(--cream); border-color: var(--green-200); }
+
+/* ─── ITEM LIST ─── */
+.item-list { max-height: 420px; overflow-y: auto; }
+
+.item-card {
+  background: var(--parchment);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green-600);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  transition: box-shadow .2s;
+}
+.item-card:hover { box-shadow: var(--shadow-sm); }
+.item-card .item-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 6px;
+}
+.item-card .item-title {
+  font-weight: 700; font-size: .9rem; color: var(--text-dark);
+}
+.item-card .item-sub {
+  font-size: .8rem; color: var(--text-muted); line-height: 1.5;
+}
+.price-tag {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 700; color: var(--green-700); font-size: .95rem;
+}
+
+/* ─── BADGES ─── */
+.pill {
+  display: inline-block; padding: 3px 10px;
+  border-radius: var(--radius-pill); font-size: .72rem; font-weight: 700;
+}
+.pill-green { background: var(--green-100); color: var(--green-700); }
+.pill-gold { background: var(--gold-100); color: #a87000; }
+.pill-terra { background: var(--terra-100); color: var(--terra); }
+.pill-gray { background: var(--cream); color: var(--text-muted); border: 1px solid var(--border); }
+.pill-blue { background: #e8f0fe; color: #3b6fd4; }
+
+/* ─── CATALOG CARDS ─── */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+.product-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+  cursor: default;
+}
+.product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.product-card-img {
+  height: 130px;
+  background: linear-gradient(135deg, var(--green-900), var(--green-700));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; position: relative; overflow: hidden;
+}
+.product-card-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.1), transparent);
+}
+.product-card-body { padding: 16px; }
+.product-card-name { font-weight: 700; font-size: .95rem; margin-bottom: 2px; }
+.product-card-farmer { font-size: .78rem; color: var(--text-muted); margin-bottom: 10px; }
+.product-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+/* ─── STEPS / FLOW ─── */
+.step-row {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.step-row:last-child { border-bottom: none; }
+.step-num {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: var(--green-800); color: white;
+  font-weight: 700; font-size: .85rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-content strong { display: block; font-size: .9rem; margin-bottom: 2px; }
+.step-content p { font-size: .8rem; color: var(--text-muted); line-height: 1.5; }
+
+/* ─── PAYMENT CARD ─── */
+.payment-card {
+  background: linear-gradient(135deg, var(--green-900), var(--green-800));
+  border-radius: var(--radius-md);
+  padding: 28px;
+  color: white; position: relative; overflow: hidden;
+}
+.payment-card::before {
+  content: '';
+  position: absolute; right: -30px; top: -30px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.payment-card::after {
+  content: '';
+  position: absolute; right: 40px; top: 40px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+
+/* ─── TRAINING CARDS ─── */
+.training-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.training-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.training-thumb {
+  height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; position: relative;
+}
+.training-thumb.green { background: linear-gradient(135deg, var(--green-900), var(--green-700)); }
+.training-thumb.gold { background: linear-gradient(135deg, #7a4f00, var(--gold-500)); }
+.training-thumb.terra { background: linear-gradient(135deg, #7a2000, var(--terra)); }
+.training-body { padding: 16px; }
+.training-body h4 { font-weight: 700; font-size: .9rem; margin-bottom: 4px; }
+.training-body p { font-size: .78rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5; }
+
+/* ─── QUIZ ─── */
+.quiz-option {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  margin-bottom: 8px; cursor: pointer;
+  transition: all .2s; background: var(--parchment);
+}
+.quiz-option:hover { border-color: var(--green-400); background: var(--green-100); }
+.quiz-option.selected { border-color: var(--green-600); background: var(--green-100); }
+.quiz-option.correct { border-color: var(--green-600); background: var(--green-100); }
+.quiz-option.wrong { border-color: #e57373; background: #fff5f5; }
+.quiz-dot {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 2px solid var(--border); flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .65rem;
+}
+.quiz-option.selected .quiz-dot { background: var(--green-600); border-color: var(--green-600); color: white; }
+
+/* ─── ALERT / TOAST ─── */
+.toast {
+  position: fixed; bottom: 28px; right: 28px; z-index: 9000;
+  background: var(--white); border-radius: var(--radius-sm);
+  padding: 16px 20px; min-width: 260px;
+  border-left: 4px solid var(--green-600);
+  box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 12px;
+  animation: toastIn .3s cubic-bezier(.22,1,.36,1);
+}
+.toast.hide { animation: toastOut .3s ease forwards; }
+@keyframes toastIn { from { opacity:0; transform: translateX(24px); } to { opacity:1; transform: none; } }
+@keyframes toastOut { to { opacity:0; transform: translateX(24px); } }
+.toast i { color: var(--green-600); font-size: 1.1rem; }
+.toast .toast-msg { font-size: .875rem; font-weight: 600; color: var(--text-dark); }
+
+/* ─── PANEL SECTION TITLE ─── */
+.section-header {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--border);
+}
+.section-header h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.4rem; font-weight: 900; color: var(--text-dark);
+  display: flex; align-items: center; gap: 10px;
+}
+.section-header p { font-size: .85rem; color: var(--text-muted); margin-top: 4px; }
+
+/* ─── EMPTY STATE ─── */
+.empty-state {
+  text-align: center; padding: 32px 16px;
+  color: var(--text-muted);
+}
+.empty-state .empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: .4; }
+.empty-state p { font-size: .875rem; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--green-900);
+  color: rgba(255,255,255,.5);
+  padding: 18px 28px;
+  text-align: center;
+  font-size: .78rem;
+  border-top: 2px solid var(--gold-500);
+}
+footer strong { color: var(--gold-400); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 680px) {
+  .top-bar-brand span { display: none; }
+  .hero-bg-art { font-size: 100px; opacity: .04; }
+  .main-content { padding: 18px 14px; }
+  .login-card { padding: 32px 24px; }
+  .kpi-value { font-size: 1.6rem; }
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 1px; background: var(--border);
+  margin: 20px 0;
+}
+
+/* ─── PROGRESS BAR ─── */
+.progress-bar-wrap {
+  background: var(--border); border-radius: 4px; height: 6px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--green-600), var(--green-400));
+  transition: width .5s ease;
+}
+
+/* ─── INFO BOX ─── */
+.info-box {
+  background: var(--gold-100);
+  border: 1px solid #f5c765;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  display: flex; gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.info-box i { color: var(--gold-500); margin-top: 1px; font-size: .9rem; flex-shrink: 0; }
+.info-box p { font-size: .82rem; color: #7a5500; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- ══════ LOGIN ══════ -->
+<div id="loginScreen">
+  <div class="login-bg-pattern"></div>
+  <div class="login-bg-art">🌿</div>
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="login-logo-icon">🌾</div>
+      <div class="login-logo-text">
+        <h1>AGROCONNECT</h1>
+        <p>Aquitania · Boyacá · Colombia</p>
+      </div>
+    </div>
+    <h2>Bienvenido</h2>
+    <p>Accede a la plataforma de comercio agrícola directo</p>
+    <div class="form-field">
+      <i class="fas fa-user"></i>
+      <input type="text" id="loginUser" placeholder="Usuario (productor, comerciante…)">
+    </div>
+    <div class="form-field">
+      <i class="fas fa-lock"></i>
+      <input type="password" id="loginPass" placeholder="Contraseña">
+    </div>
+    <button class="btn-primary" id="btnLogin">
+      <i class="fas fa-sign-in-alt"></i> &nbsp;Ingresar a la plataforma
+    </button>
+    <div id="loginError" class="error-msg"></div>
+    <div class="login-demo">
+      Demo TRL4 — ingresa <strong>cualquier usuario y contraseña</strong> para continuar
+    </div>
+  </div>
+</div>
+
+<!-- ══════ APP ══════ -->
+<div id="app">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="top-bar-brand">
+      <div class="brand-icon">🌾</div>
+      <h1>AGROCONNECT</h1>
+      <span>TRL4 Prototipo</span>
+    </div>
+    <div class="top-bar-right">
+      <button class="notification-btn">
+        <i class="fas fa-bell"></i>
+        <span class="notif-dot"></span>
+      </button>
+      <div class="user-chip">
+        <div class="avatar" id="userAvatar">U</div>
+        <span id="userNameDisplay">Usuario</span>
+      </div>
+      <button class="btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Salir</button>
+    </div>
+  </div>
+
+  <!-- PRICE TICKER -->
+  <div class="price-ticker">
+    <div class="ticker-track">
+      <span class="ticker-item"><span class="t-name">🧅 Cebolla Larga · Corabastos</span> <span class="t-up">$11.200/arroba ↑ 3.2%</span></span>
+      <span class="ticker-item"><span class="t-name">🧅 Cebolla Cabezona · Paloquemao</span> <span class="t-down">$14.800/kg ↓ 1.1%</span></span>
+      <span class="ticker-item"><span class="t-name">🥕 Zanahoria · Medellín</span> <span class="t-up">$1.200/kg ↑ 0.8%</span></span>
+      <span class="ticker-item"><span class="t-name">🧅 Cebolla Larga · Manizales</span> <span class="t-up">$10.900/arroba ↑ 2.1%</span></span>
+      <span class="ticker-item"><span class="t-name">🌽 Papa pastusa · Bogotá</span> <span class="t-up">$1.100/kg ↑ 1.5%</span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item"><span class="t-name">🧅 Cebolla Larga · Corabastos</span> <span class="t-up">$11.200/arroba ↑ 3.2%</span></span>
+      <span class="ticker-item"><span class="t-name">🧅 Cebolla Cabezona · Paloquemao</span> <span class="t-down">$14.800/kg ↓ 1.1%</span></span>
+      <span class="ticker-item"><span class="t-name">🥕 Zanahoria · Medellín</span> <span class="t-up">$1.200/kg ↑ 0.8%</span></span>
+      <span class="ticker-item"><span class="t-name">🧅 Cebolla Larga · Manizales</span> <span class="t-up">$10.900/arroba ↑ 2.1%</span></span>
+      <span class="ticker-item"><span class="t-name">🌽 Papa pastusa · Bogotá</span> <span class="t-up">$1.100/kg ↑ 1.5%</span></span>
+    </div>
+  </div>
+
+  <!-- HERO HEADER -->
+  <div class="hero-header">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-bg-art">🧅</div>
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <div class="hero-eyebrow"><i class="fas fa-map-marker-alt"></i> Aquitania, Boyacá · Colombia</div>
+        <h2>
+          Del campo al comprador,
+          <em>sin intermediarios.</em>
+        </h2>             
+      </div>     
+
+    </div>
+  </div>
+
+  <!-- NAV TABS -->
+  <div class="nav-tabs">
+    <button class="nav-tab active" data-panel="inicio"><i class="fas fa-th-large"></i> Dashboard</button>
+    <button class="nav-tab" data-panel="registro"><i class="fas fa-user-plus"></i> Productores</button>
+    <button class="nav-tab" data-panel="catalogo"><i class="fas fa-store"></i> Catálogo</button>
+    <button class="nav-tab" data-panel="ofertas"><i class="fas fa-bullhorn"></i> Ofertas</button>
+    <button class="nav-tab" data-panel="pedidos"><i class="fas fa-truck"></i> Pedidos</button>
+    <button class="nav-tab" data-panel="pagos"><i class="fas fa-credit-card"></i> Pagos</button>
+    <button class="nav-tab" data-panel="capacitacion"><i class="fas fa-graduation-cap"></i> Capacitación</button>
+    <button class="nav-tab" data-panel="logistica"><i class="fas fa-route"></i> Logística</button>
+    <button class="nav-tab" data-panel="impacto"><i class="fas fa-chart-pie"></i> Impacto</button>
+  </div>
+
+  <div class="main-content">
+
+    <!-- ╔══════════════════════════════╗
+         ║  PANEL: DASHBOARD / INICIO  ║
+         ╚══════════════════════════════╝ -->
+    <div id="panel-inicio" class="panel active-panel">
+      <div class="section-header">
+        <h2><i class="fas fa-th-large"></i> Dashboard AGROCONNECT</h2>
+        <p>Resumen en tiempo real de la plataforma · Prototipo TRL4</p>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid-4" style="margin-bottom:20px;">
+        <div class="kpi-card">
+          <div class="kpi-icon green"><i class="fas fa-users"></i></div>
+          <span class="kpi-trend up">↑ Activos</span>
+          <div class="kpi-value" id="statsProductores">0</div>
+          <div class="kpi-label">Productores</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon gold"><i class="fas fa-bullhorn"></i></div>
+          <span class="kpi-trend new">En venta</span>
+          <div class="kpi-value" id="statsOfertas">0</div>
+          <div class="kpi-label">Ofertas activas</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon terra"><i class="fas fa-truck"></i></div>
+          <span class="kpi-trend up">Total</span>
+          <div class="kpi-value" id="statsPedidos">0</div>
+          <div class="kpi-label">Pedidos</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon blue"><i class="fas fa-check-circle"></i></div>
+          <span class="kpi-trend up">✔ OK</span>
+          <div class="kpi-value" id="statsPagados">0</div>
+          <div class="kpi-label">Pedidos pagados</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- Últimas ofertas -->
+        <div class="card">
+          <div class="card-title"><i class="fas fa-clock"></i> Últimas ofertas publicadas</div>
+          <div id="ultimasOfertas"></div>
+        </div>
+
+        <!-- Flujo del proceso -->
+        <div class="card">
+          <div class="card-title"><i class="fas fa-stream"></i> Cómo funciona AGROCONNECT</div>
+          <div class="step-row">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <strong>Registro de productor</strong>
+              <p>El campesino se registra con sus datos básicos, finca y vereda en Aquitania.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <strong>Publicación de oferta</strong>
+              <p>Publica su cosecha de cebolla larga con cantidad, precio y descripción.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <strong>Pedido directo</strong>
+              <p>Compradores mayoristas o minoristas realizan pedidos sin intermediarios.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <strong>Pago seguro y trazable</strong>
+              <p>Transferencia digital directa al productor con comprobante.</p>
+            </div>
+          </div>
+          <div class="step-row">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <strong>Logística coordinada</strong>
+              <p>Red de transporte aliado garantiza entrega desde la finca al punto de destino.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Precio de referencia -->
+        <div class="card">
+          <div class="card-title"><i class="fas fa-chart-line"></i> Precios de referencia · Cebolla Larga</div>
+          <div class="info-box">
+            <i class="fas fa-info-circle"></i>
+            <p>Precios indicativos basados en centrales mayoristas de Colombia (Corabastos, Paloquemao, Plaza Minorista). Actualizado: Abril 2026.</p>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="background:var(--green-100); border-radius:var(--radius-sm); padding:14px; text-align:center;">
+              <div style="font-family:'Arial',serif; font-size:1.4rem; font-weight:900; color:var(--green-800);">$10.500</div>
+              <div style="font-size:.75rem; color:var(--green-700); font-weight:600;">Precio mín. arroba</div>
+            </div>
+            <div style="background:var(--gold-100); border-radius:var(--radius-sm); padding:14px; text-align:center;">
+              <div style="font-family:'Arial',serif; font-size:1.4rem; font-weight:900; color:#a87000;">$12.800</div>
+              <div style="font-size:.75rem; color:#a87000; font-weight:600;">Precio máx. arroba</div>
+            </div>
+          </div>
+          <div style="margin-top:14px;">
+            <div style="display:flex; justify-content:space-between; font-size:.78rem; color:var(--text-muted); margin-bottom:5px;">
+              <span>Precio promedio plataforma</span><span style="font-weight:700; color:var(--green-700);">$11.200/arroba</span>
+            </div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar-fill" style="width:65%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Impacto rápido -->
+        <div class="card">
+          <div class="card-title"><i class="fas fa-star"></i> Propuesta de valor</div>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; gap:12px; align-items:center; padding:12px; background:var(--green-100); border-radius:var(--radius-sm);">
+              <span style="font-size:1.5rem;">💰</span>
+              <div><strong style="font-size:.9rem;">Precios más justos</strong><br><span style="font-size:.78rem; color:var(--text-muted);">Eliminación de hasta 3 eslabones de intermediación</span></div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:center; padding:12px; background:var(--gold-100); border-radius:var(--radius-sm);">
+              <span style="font-size:1.5rem;">📱</span>
+              <div><strong style="font-size:.9rem;">Inclusión digital rural</strong><br><span style="font-size:.78rem; color:var(--text-muted);">Capacitación y acompañamiento para agricultores</span></div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:center; padding:12px; background:var(--terra-100); border-radius:var(--radius-sm);">
+              <span style="font-size:1.5rem;">🚚</span>
+              <div><strong style="font-size:.9rem;">Logística integrada</strong><br><span style="font-size:.78rem; color:var(--text-muted);">Alianzas con transporte desde la finca al destino</span></div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:center; padding:12px; background:#e8f0fe; border-radius:var(--radius-sm);">
+              <span style="font-size:1.5rem;">📊</span>
+              <div><strong style="font-size:.9rem;">Trazabilidad y monitoreo</strong><br><span style="font-size:.78rem; color:var(--text-muted);">Seguimiento del impacto socioeconómico en tiempo real</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══════════════════════╗
+         ║  PANEL: PRODUCTORES  ║
+         ╚══════════════════════╝ -->
+    <div id="panel-registro" class="panel">
+      <div class="section-header">
+        <h2><i class="fas fa-users"></i> Registro de Productores</h2>
+        <p>Registra a los campesinos productores de cebolla larga de Aquitania</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><i class="fas fa-id-card"></i> Nuevo productor rural</div>
+          <div class="info-box">
+            <i class="fas fa-lightbulb"></i>
+            <p>Al registrarse, el productor podrá publicar ofertas, recibir pedidos directos y acceder a capacitación digital.</p>
+          </div>
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="regNombre" placeholder="Ej: José Antonio Pérez">
+          </div>
+          <div class="form-group">
+            <label>Nombre de la finca</label>
+            <input type="text" id="regFinca" placeholder="Ej: La Esperanza">
+          </div>
+          <div class="form-group">
+            <label>Vereda</label>
+            <select id="regVereda">
+              <option value="">Seleccionar vereda…</option>
+              <option>Santa Bárbara</option>
+              <option>El Espinal</option>
+              <option>Río Frío</option>
+              <option>Pantano de Vargas</option>
+              <option>La Playa</option>
+              <option>Hato Viejo</option>
+              <option>Centro (Aquitania)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="regTelefono" placeholder="Ej: 310 111 2222">
+          </div>
+          <div class="form-group">
+            <label>Hectáreas cultivadas (aprox.)</label>
+            <input type="number" id="regHectareas" placeholder="Ej: 2.5" step="0.5">
+          </div>
+          <button class="btn btn-green" id="btnRegistrar"><i class="fas fa-user-plus"></i> Registrar productor</button>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-list"></i> Productores registrados <span id="countProductores" class="pill pill-green" style="margin-left:6px;">0</span></div>
+          <div id="listaProductores" class="item-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══════════════════╗
+         ║  PANEL: CATÁLOGO ║
+         ╚══════════════════╝ -->
+    <div id="panel-catalogo" class="panel">
+      <div class="section-header">
+        <h2><i class="fas fa-store"></i> Catálogo de Productos</h2>
+        <p>Oferta disponible de cebolla larga — compra directa al productor</p>
+      </div>
+      <div id="catalogoLista"></div>
+    </div>
+
+    <!-- ╔══════════════════╗
+         ║  PANEL: OFERTAS  ║
+         ╚══════════════════╝ -->
+    <div id="panel-ofertas" class="panel">
+      <div class="section-header">
+        <h2><i class="fas fa-bullhorn"></i> Gestión de Ofertas</h2>
+        <p>Publica tu cosecha de cebolla larga con precio directo al mercado</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><i class="fas fa-plus-circle"></i> Publicar nueva oferta</div>
+          <div class="form-group">
+            <label>Productor</label>
+            <select id="ofertaProductor"></select>
+          </div>
+          <div class="form-group">
+            <label>Cantidad disponible (arrobas)</label>
+            <input type="number" id="ofertaCantidad" placeholder="Ej: 120">
+          </div>
+          <div class="form-group">
+            <label>Precio por arroba (COP $)</label>
+            <input type="number" id="ofertaPrecio" placeholder="Ej: 11000">
+          </div>
+          <div class="form-group">
+            <label>Calidad / Descripción</label>
+            <textarea id="ofertaDesc" placeholder="Ej: Cebolla de primera calidad, cosechada esta semana, vereda Santa Bárbara…"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Disponibilidad de entrega</label>
+            <select id="ofertaEntrega">
+              <option value="inmediata">Inmediata (1-2 días)</option>
+              <option value="semana">Esta semana</option>
+              <option value="quincena">Próxima quincena</option>
+            </select>
+          </div>
+          <button class="btn btn-green" id="btnPublicarOferta"><i class="fas fa-paper-plane"></i> Publicar oferta</button>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-tag"></i> Ofertas activas <span id="countOfertas" class="pill pill-gold" style="margin-left:6px;">0</span></div>
+          <div id="listaOfertas" class="item-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══════════════════╗
+         ║  PANEL: PEDIDOS  ║
+         ╚══════════════════╝ -->
+    <div id="panel-pedidos" class="panel">
+      <div class="section-header">
+        <h2><i class="fas fa-truck"></i> Gestión de Pedidos</h2>
+        <p>Realiza y gestiona pedidos directamente al productor</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><i class="fas fa-shopping-cart"></i> Realizar pedido</div>
+          <div class="form-group">
+            <label>Seleccionar oferta</label>
+            <select id="pedidoOferta"></select>
+          </div>
+          <div class="form-group">
+            <label>Cantidad a comprar (arrobas)</label>
+            <input type="number" id="pedidoCantidad" placeholder="Ej: 50">
+          </div>
+          <div class="form-group">
+            <label>Nombre del comprador</label>
+            <input type="text" id="pedidoComprador" placeholder="Ej: Distribuidora El Campo Ltda.">
+          </div>
+          <div id="pedidoResumen" style="display:none;" class="info-box">
+            <i class="fas fa-calculator"></i>
+            <p id="pedidoResumenText"></p>
+          </div>
+          <button class="btn btn-green" id="btnHacerPedido"><i class="fas fa-check"></i> Confirmar pedido</button>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-list-alt"></i> Historial de pedidos <span id="countPedidos" class="pill pill-terra" style="margin-left:6px;">0</span></div>
+          <div id="listaPedidos" class="item-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔══════════════════╗
+         ║  PANEL: PAGOS    ║
+         ╚══════════════════╝ -->
+    <div id="panel-pagos" class="panel">
+      <div class="section-header">
+        <h2><i class="fas fa-credit-card"></i> Módulo de Pagos</h2>
+        <p>Simulación de pago digital seguro y trazable</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><i class="fas fa-wallet"></i> Procesar pago</div>
+          <div class="info-box">
+            <i class="fas fa-shield-alt"></i>
+            <p>Los pagos se realizan directamente al productor mediante transferencia bancaria, Nequi o Daviplata. Sin intermediarios financieros.</p>
+          </div>
+          <div class="form-group">
+            <label>Pedido a pagar</label>
+            <select id="pagoPedido"></select>
+          </div>
+          <div class="form-group">
+            <label>Método de pago</label>
+            <select id="pagoMetodo">
+              <option value="nequi">Nequi</option>
+              <option value="daviplata">Daviplata</option>
+              <option value="transferencia">Transferencia bancaria</option>
+              <option value="efectivo">Efectivo contra entrega</option>
+            </select>
+          </div>
+          <button class="btn btn-gold" id="btnSimularPago" style="width:100%;"><i class="fas fa-lock"></i> Confirmar pago (simulado)</button>
+          <div id="mensajePago" style="margin-top:15px;"></div>
+        </div>
+        <div>
+          <!-- Tarjeta visual -->
+          <div class="payment-card" style="margin-bottom:16px;">
+            <div style="position:relative; z-index:1;">
+              <div style="font-size:.7rem; letter-spacing:1px; opacity:.5; text-transform:uppercase; margin-bottom:8px;">AGROCONNECT · Pago directo</div>
+              <div style="font-family:'Arial',serif; font-size:1.5rem; font-weight:900; margin-bottom:4px;">🧅 Cebolla Larga</div>
+              <div style="font-size:.85rem; opacity:.7; margin-bottom:20px;">Pago seguro · Sin intermediarios</div>
+              <div style="display:flex; justify-content:space-between;">
+                <div>
+                  <div style="font-size:.7rem; opacity:.5; text-transform:uppercase; letter-spacing:.5px;">Productor</div>
+                  <div style="font-weight:700;" id="pagoProductorLabel">—</div>
+                </div>
+                <div style="text-align:right;">
+                  <div style="font-size:.7rem; opacity:.5; text-transform:uppercase; letter-spacing:.5px;">Total</div>
+                  <div style="font-family:'Arial',serif; font-size:1.3rem; font-weight:900; color:var(--gold-400);" id="pagoTotalLabel">$0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title"><i class="fas fa-history"></i> Pagos realizados</div>
+            <div id="listaPagos" class="item-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔════════════════════════╗
+         ║  PANEL: CAPACITACIÓN  ║
+         ╚════════════════════════╝ -->
+    <div id="panel-capacitacion" class="panel">
+      <div class="section-header">
+        <h2><i class="fas fa-graduation-cap"></i> Programa de Capacitación Digital</h2>
+        <p>Módulos educativos para agricultores · Inclusión digital rural</p>
+      </div>
+      <div class="grid-3" style="margin-bottom:20px;">
+        <div class="training-card">
+          <div class="training-thumb green">📱</div>
+          <div class="training-body">
+            <span class="pill pill-green" style="margin-bottom:8px; display:inline-block;">Módulo 1</span>
+            <h4>Uso de la plataforma AGROCONNECT</h4>
+            <p>Aprende a registrarte, publicar tu cosecha y recibir pedidos directamente en tu celular.</p>
+            <button class="btn btn-green" style="font-size:.78rem; padding:8px 16px;"><i class="fas fa-play"></i> Ver tutorial</button>
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="training-thumb gold">💰</div>
+          <div class="training-body">
+            <span class="pill pill-gold" style="margin-bottom:8px; display:inline-block;">Módulo 2</span>
+            <h4>Precios justos y negociación directa</h4>
+            <p>Cómo interpretar los precios de las centrales mayoristas y negociar sin ceder ante intermediarios.</p>
+            <button class="btn btn-green" style="font-size:.78rem; padding:8px 16px;"><i class="fas fa-play"></i> Ver tutorial</button>
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="training-thumb terra">🌱</div>
+          <div class="training-body">
+            <span class="pill pill-terra" style="margin-bottom:8px; display:inline-block;">Módulo 3</span>
+            <h4>Buenas prácticas agrícolas (BPA)</h4>
+            <p>Estándares de calidad y cosecha de cebolla larga para acceder a mercados exigentes.</p>
+            <button class="btn btn-green" style="font-size:.78rem; padding:8px 16px;"><i class="fas fa-play"></i> Ver tutorial</button>
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="training-thumb" style="background:linear-gradient(135deg,#1a1a5e,#3b3bd4);">📊</div>
+          <div class="training-body">
+            <span class="pill pill-blue" style="margin-bottom:8px; display:inline-block;">Módulo 4</span>
+            <h4>Marketing digital para el campo</h4>
+            <p>Estrategias básicas para promover tu cosecha y atraer más compradores por redes sociales.</p>
+            <button class="btn btn-green" style="font-size:.78rem; padding:8px 16px;"><i class="fas fa-play"></i> Ver tutorial</button>
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="training-thumb" style="background:linear-gradient(135deg,#4a006e,#9c27b0);">🚚</div>
+          <div class="training-body">
+            <span class="pill pill-gray" style="margin-bottom:8px; display:inline-block;">Módulo 5</span>
+            <h4>Logística y cadena de frío</h4>
+            <p>Cómo coordinar el transporte desde tu finca y preservar la calidad del producto.</p>
+            <button class="btn btn-green" style="font-size:.78rem; padding:8px 16px;"><i class="fas fa-play"></i> Ver tutorial</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz -->
+      <div class="card">
+        <div class="card-title"><i class="fas fa-clipboard-check"></i> Evaluación de conocimiento</div>
+        <p style="font-size:.875rem; color:var(--text-muted); margin-bottom:18px;">¿Cuál es el principal beneficio de AGROCONNECT para los productores?</p>
+        <div id="quizOptions">
+          <div class="quiz-option" onclick="selectQuiz(this,'a')">
+            <div class="quiz-dot">A</div>
+            <span style="font-size:.875rem;">Tener más intermediarios para vender más rápido</span>
+          </div>
+          <div class="quiz-option" onclick="selectQuiz(this,'b')">
+            <div class="quiz-dot">B</div>
+            <span style="font-size:.875rem;">Eliminar intermediarios y obtener precios justos vía venta directa</span>
+          </div>
+          <div class="quiz-option" onclick="selectQuiz(this,'c')">
+            <div class="quiz-dot">C</div>
+            <span style="font-size:.875rem;">Vender únicamente en Bogotá sin salir de la finca</span>
+          </div>
+          <div class="quiz-option" onclick="selectQuiz(this,'d')">
+            <div class="quiz-dot">D</div>
+            <span style="font-size:.875rem;">Reducir la calidad del producto para bajar costos</span>
+          </div>
+        </div>
+        <button class="btn btn-green" id="btnEvaluar" style="margin-top:14px;"><i class="fas fa-paper-plane"></i> Enviar respuesta</button>
+        <div id="resultadoQuiz" style="margin-top:14px;"></div>
+      </div>
+    </div>
+
+    <!-- ╔══════════════════════╗
+         ║  PANEL: LOGÍSTICA   ║
+         ╚══════════════════════╝ -->
+    <div id="panel-logistica" class="panel">
+      <div class="section-header">
+        <h2><i class="fas fa-route"></i> Módulo de Logística</h2>
+        <p>Red de transporte aliado desde Aquitania a los puntos de venta</p>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><i class="fas fa-map-marked-alt"></i> Rutas de distribución</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div class="item-card" style="border-left-color:var(--green-600);">
+              <div class="item-header">
+                <div class="item-title">🚛 Aquitania → Bogotá (Corabastos)</div>
+                <span class="pill pill-green">Activa</span>
+              </div>
+              <div class="item-sub">Distancia: ~180 km · Tiempo estimado: 3-4 horas<br>Capacidad: 2.000 arrobas · Frecuencia: Martes y Viernes</div>
+            </div>
+            <div class="item-card" style="border-left-color:var(--gold-500);">
+              <div class="item-header">
+                <div class="item-title">🚛 Aquitania → Sogamoso (Mercado Central)</div>
+                <span class="pill pill-gold">Activa</span>
+              </div>
+              <div class="item-sub">Distancia: ~48 km · Tiempo estimado: 1 hora<br>Capacidad: 800 arrobas · Frecuencia: Lunes, Miércoles, Sábado</div>
+            </div>
+            <div class="item-card" style="border-left-color:var(--terra);">
+              <div class="item-header">
+                <div class="item-title">🚛 Aquitania → Tunja (Plaza Campesina)</div>
+                <span class="pill pill-terra">Activa</span>
+              </div>
+              <div class="item-sub">Distancia: ~95 km · Tiempo estimado: 1.5-2 horas<br>Capacidad: 1.200 arrobas · Frecuencia: Jueves y Domingo</div>
+            </div>
+            <div class="item-card" style="border-left-color:#3b6fd4; opacity:.6;">
+              <div class="item-header">
+                <div class="item-title">🚛 Aquitania → Medellín (Plaza Minorista)</div>
+                <span class="pill pill-blue">En gestión</span>
+              </div>
+              <div class="item-sub">Próximamente · Alianza en negociación con transportador</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-handshake"></i> Transportadores aliados</div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; gap:14px; padding:14px; background:var(--green-100); border-radius:var(--radius-sm);">
+              <span style="font-size:2rem;">🚚</span>
+              <div>
+                <strong style="font-size:.9rem;">Flota Boyacá S.A.S.</strong><br>
+                <span style="font-size:.78rem; color:var(--text-muted);">3 vehículos refrigerados · Sogamoso</span><br>
+                <span class="pill pill-green" style="margin-top:4px; display:inline-block;">Aliado verificado</span>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:14px; padding:14px; background:var(--gold-100); border-radius:var(--radius-sm);">
+              <span style="font-size:2rem;">🚐</span>
+              <div>
+                <strong style="font-size:.9rem;">Transagrícola Ltda.</strong><br>
+                <span style="font-size:.78rem; color:var(--text-muted);">5 camionetas · Aquitania</span><br>
+                <span class="pill pill-gold" style="margin-top:4px; display:inline-block;">En proceso</span>
+              </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:14px; padding:14px; background:var(--cream); border-radius:var(--radius-sm); border:1px dashed var(--border);">
+              <span style="font-size:2rem;">➕</span>
+              <div>
+                <strong style="font-size:.9rem;">¿Eres transportador?</strong><br>
+                <span style="font-size:.78rem; color:var(--text-muted);">Únete a la red de distribución de AGROCONNECT</span><br>
+                <button class="btn btn-outline" style="margin-top:6px; font-size:.75rem; padding:5px 14px;">Postularme</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ╔═══════════════════════╗
+         ║  PANEL: IMPACTO      ║
+         ╚═══════════════════════╝ -->
+    <div id="panel-impacto" class="panel">
+      <div class="section-header">
+        <h2><i class="fas fa-chart-pie"></i> Monitoreo de Impacto Socioeconómico</h2>
+        <p>Indicadores de seguimiento y evaluación del proyecto · TRL4</p>
+      </div>
+      <div class="grid-3" style="margin-bottom:20px;">
+        <div class="kpi-card">
+          <div class="kpi-icon green"><i class="fas fa-arrow-trend-up"></i></div>
+          <div class="kpi-value">+28%</div>
+          <div class="kpi-label">Aumento estimado ingresos</div>
+          <div style="margin-top:12px;" class="progress-bar-wrap"><div class="progress-bar-fill" style="width:28%;"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon gold"><i class="fas fa-ban"></i></div>
+          <div class="kpi-value">3</div>
+          <div class="kpi-label">Intermediarios eliminados</div>
+          <div style="margin-top:12px;" class="progress-bar-wrap"><div class="progress-bar-fill" style="width:75%;"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon terra"><i class="fas fa-smile"></i></div>
+          <div class="kpi-value">92%</div>
+          <div class="kpi-label">Satisfacción usuarios</div>
+          <div style="margin-top:12px;" class="progress-bar-wrap"><div class="progress-bar-fill" style="width:92%;"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon blue"><i class="fas fa-mobile-alt"></i></div>
+          <div class="kpi-value">74%</div>
+          <div class="kpi-label">Adopción digital</div>
+          <div style="margin-top:12px;" class="progress-bar-wrap"><div class="progress-bar-fill" style="width:74%;"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon green"><i class="fas fa-female"></i></div>
+          <div class="kpi-value">41%</div>
+          <div class="kpi-label">Productoras mujeres</div>
+          <div style="margin-top:12px;" class="progress-bar-wrap"><div class="progress-bar-fill" style="width:41%;"></div></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon gold"><i class="fas fa-graduation-cap"></i></div>
+          <div class="kpi-value">85%</div>
+          <div class="kpi-label">Capacitados exitosamente</div>
+          <div style="margin-top:12px;" class="progress-bar-wrap"><div class="progress-bar-fill" style="width:85%;"></div></div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title"><i class="fas fa-tasks"></i> Objetivos TRL4 del proyecto</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="display:flex; align-items:center; gap:12px; font-size:.875rem;">
+              <span style="color:var(--green-600);"><i class="fas fa-check-circle"></i></span>
+              <span>Prototipo funcional Web + Móvil desarrollado</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:.875rem;">
+              <span style="color:var(--green-600);"><i class="fas fa-check-circle"></i></span>
+              <span>Módulos de registro, catálogo, pedidos y pagos implementados</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:.875rem;">
+              <span style="color:var(--green-600);"><i class="fas fa-check-circle"></i></span>
+              <span>Validación con usuarios simulados en entorno de laboratorio</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:.875rem;">
+              <span style="color:var(--green-600);"><i class="fas fa-check-circle"></i></span>
+              <span>Módulo de capacitación con quiz de evaluación</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:.875rem;">
+              <span style="color:var(--gold-500);"><i class="fas fa-clock"></i></span>
+              <span>Alianzas logísticas con transportadores (en proceso)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:.875rem;">
+              <span style="color:var(--gold-500);"><i class="fas fa-clock"></i></span>
+              <span>Piloto con productores reales de Aquitania (TRL5)</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px; font-size:.875rem; opacity:.5;">
+              <span><i class="fas fa-circle"></i></span>
+              <span>Despliegue en producción (TRL6–TRL7)</span>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title"><i class="fas fa-road"></i> Hoja de ruta TRL</div>
+          <div style="display:flex; flex-direction:column; gap:0;">
+            <div style="display:flex; gap:14px; padding:12px 0; border-bottom:1px solid var(--border);">
+              <div style="width:48px; height:48px; background:var(--green-600); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:900; flex-shrink:0; font-family:'Arial',serif;">4</div>
+              <div>
+                <strong style="font-size:.875rem; display:flex; align-items:center; gap:6px;">TRL 4 — Actual <span class="pill pill-green">Completado</span></strong>
+                <p style="font-size:.78rem; color:var(--text-muted); margin-top:2px;">Prototipo validado en entorno simulado de laboratorio</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:14px; padding:12px 0; border-bottom:1px solid var(--border);">
+              <div style="width:48px; height:48px; background:var(--gold-500); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--green-900); font-weight:900; flex-shrink:0; font-family:'Arial',serif;">5</div>
+              <div>
+                <strong style="font-size:.875rem; display:flex; align-items:center; gap:6px;">TRL 5 — Próximo <span class="pill pill-gold">Planificado</span></strong>
+                <p style="font-size:.78rem; color:var(--text-muted); margin-top:2px;">Piloto con 20 productores reales de Aquitania (2025-II)</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:14px; padding:12px 0; border-bottom:1px solid var(--border);">
+              <div style="width:48px; height:48px; background:var(--cream); border:2px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-family:'Arial',serif; color:var(--text-muted); flex-shrink:0;">6</div>
+              <div>
+                <strong style="font-size:.875rem; color:var(--text-muted);">TRL 6 — Demostración en entorno relevante</strong>
+                <p style="font-size:.78rem; color:var(--text-muted); margin-top:2px;">Integración con plataformas de pago y logística reales</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:14px; padding:12px 0;">
+              <div style="width:48px; height:48px; background:var(--cream); border:2px solid var(--border); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:900; font-family:'Arial',serif; color:var(--text-muted); flex-shrink:0;">7</div>
+              <div>
+                <strong style="font-size:.875rem; color:var(--text-muted);">TRL 7 — Prototipo en entorno operativo real</strong>
+                <p style="font-size:.78rem; color:var(--text-muted); margin-top:2px;">Despliegue regional en Boyacá — escala completa</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end main-content -->
+
+  <footer>
+    🌿 <strong>AGROCONNECT</strong> — Prototipo TRL4 · Aquitania, Boyacá, Colombia &nbsp;|&nbsp;
+    Datos simulados en localStorage &nbsp;|&nbsp; Propuesta de innovación social y digital rural
+  </footer>
+</div><!-- end #app -->
+
+<!-- Toast container -->
+<div id="toastEl" class="toast" style="display:none;">
+  <i class="fas fa-check-circle"></i>
+  <span class="toast-msg" id="toastMsg"></span>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════
+let productores = [], ofertas = [], pedidos = [], currentUser = null;
+let selectedQuizAnswer = null;
+
+function loadData() {
+  productores = JSON.parse(localStorage.getItem('agro_productores')) || [];
+  ofertas     = JSON.parse(localStorage.getItem('agro_ofertas'))     || [];
+  pedidos     = JSON.parse(localStorage.getItem('agro_pedidos'))     || [];
+  if (productores.length === 0) seedData();
+}
+
+function seedData() {
+  productores = [
+    { id:1, nombre:"José Antonio Pérez", finca:"La Esperanza", vereda:"Santa Bárbara", telefono:"3101112222", hectareas:2 },
+    { id:2, nombre:"María Elena López",  finca:"El Oasis",      vereda:"Río Frío",      telefono:"3203334444", hectareas:1.5 },
+    { id:3, nombre:"Carlos Rodríguez",   finca:"El Porvenir",   vereda:"El Espinal",    telefono:"3154445555", hectareas:3 },
+  ];
+  ofertas = [
+    { id:101, productorId:1, productorNombre:"José Antonio Pérez", cantidad:120, precio:11000, descripcion:"Cebolla fresca primera calidad, cosechada esta semana", estado:"activa", entrega:"inmediata", fecha:"13/05/2025" },
+    { id:102, productorId:2, productorNombre:"María Elena López",  cantidad:80,  precio:10500, descripcion:"Cebolla larga premium, tamaño uniforme, vereda Río Frío", estado:"activa", entrega:"semana",    fecha:"13/05/2025" },
+    { id:103, productorId:3, productorNombre:"Carlos Rodríguez",   cantidad:200, precio:10800, descripcion:"Gran volumen disponible, producción tecnificada", estado:"activa", entrega:"quincena",  fecha:"12/05/2025" },
+  ];
+  saveData();
+}
+
+function saveData() {
+  localStorage.setItem('agro_productores', JSON.stringify(productores));
+  localStorage.setItem('agro_ofertas',     JSON.stringify(ofertas));
+  localStorage.setItem('agro_pedidos',     JSON.stringify(pedidos));
+}
+
+// ═══════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════
+function showToast(msg, type='success') {
+  const el = document.getElementById('toastEl');
+  const ic = el.querySelector('i');
+  document.getElementById('toastMsg').textContent = msg;
+  ic.className = type === 'success' ? 'fas fa-check-circle' : 'fas fa-exclamation-triangle';
+  ic.style.color = type === 'success' ? 'var(--green-600)' : 'var(--terra)';
+  el.style.borderLeftColor = type === 'success' ? 'var(--green-600)' : 'var(--terra)';
+  el.style.display = 'flex';
+  el.classList.remove('hide');
+  clearTimeout(el._t);
+  el._t = setTimeout(() => { el.classList.add('hide'); setTimeout(() => el.style.display='none', 300); }, 3200);
+}
+
+// ═══════════════════════════════════════════
+//  RENDER FUNCTIONS
+// ═══════════════════════════════════════════
+function renderAll() {
+  renderProductores(); renderCatalogo(); renderOfertas();
+  renderPedidos(); renderSelects(); renderEstadisticas(); renderUltimasOfertas();
+  renderPagos();
+}
+
+function renderProductores() {
+  const c = document.getElementById('listaProductores');
+  if (!c) return;
+  document.getElementById('countProductores').textContent = productores.length;
+  if (productores.length === 0) { c.innerHTML = emptyState('No hay productores registrados aún'); return; }
+  c.innerHTML = productores.map(p => `
+    <div class="item-card">
+      <div class="item-header">
+        <div class="item-title">👨‍🌾 ${p.nombre}</div>
+        <span class="pill pill-green">Activo</span>
+      </div>
+      <div class="item-sub">
+        🌾 Finca: <strong>${p.finca}</strong> · 📍 ${p.vereda || 'N/A'}<br>
+        📞 ${p.telefono || '—'} ${p.hectareas ? '· '+p.hectareas+' ha cultivadas' : ''}
+      </div>
+    </div>`).join('');
+}
+
+function renderCatalogo() {
+  const c = document.getElementById('catalogoLista');
+  if (!c) return;
+  const activas = ofertas.filter(o => o.estado === 'activa');
+  if (activas.length === 0) { c.innerHTML = emptyState('No hay productos disponibles en el catálogo'); return; }
+  c.innerHTML = `<div class="product-grid">${activas.map(o => `
+    <div class="product-card">
+      <div class="product-card-img">🧅</div>
+      <div class="product-card-body">
+        <div class="product-card-name">Cebolla Larga · Aquitania</div>
+        <div class="product-card-farmer">👨‍🌾 ${o.productorNombre}</div>
+        <div style="font-size:.78rem; color:var(--text-muted); margin-bottom:10px;">${o.descripcion}</div>
+        <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px;">
+          <span class="pill pill-gray">${o.cantidad} arrobas disp.</span>
+          <span class="pill ${o.entrega==='inmediata'?'pill-green':o.entrega==='semana'?'pill-gold':'pill-gray'}">
+            ${o.entrega==='inmediata'?'Entrega inmediata':o.entrega==='semana'?'Esta semana':'Próxima quincena'}
+          </span>
+        </div>
+        <div class="product-card-footer">
+          <span class="price-tag">$${o.precio.toLocaleString()}/arroba</span>
+          <button class="btn btn-green" style="font-size:.75rem; padding:7px 14px;" onclick="goToPedido(${o.id})">
+            <i class="fas fa-shopping-cart"></i> Pedir
+          </button>
+        </div>
+      </div>
+    </div>`).join('')}</div>`;
+}
+
+function renderOfertas() {
+  const c = document.getElementById('listaOfertas');
+  if (!c) return;
+  const activas = ofertas.filter(o => o.estado === 'activa');
+  document.getElementById('countOfertas').textContent = activas.length;
+  if (activas.length === 0) { c.innerHTML = emptyState('No hay ofertas activas'); return; }
+  c.innerHTML = activas.map(o => `
+    <div class="item-card">
+      <div class="item-header">
+        <div class="item-title">🧅 ${o.productorNombre}</div>
+        <span class="price-tag">$${o.precio.toLocaleString()}</span>
+      </div>
+      <div class="item-sub">
+        📦 ${o.cantidad} arrobas disponibles · 🗓 ${o.fecha||''}<br>
+        ${o.descripcion}
+      </div>
+    </div>`).join('');
+}
+
+function renderPedidos() {
+  const c = document.getElementById('listaPedidos');
+  if (!c) return;
+  document.getElementById('countPedidos').textContent = pedidos.length;
+  if (pedidos.length === 0) { c.innerHTML = emptyState('No hay pedidos realizados aún'); return; }
+  c.innerHTML = [...pedidos].reverse().map(p => `
+    <div class="item-card" style="border-left-color:${p.estadoPago==='pagado'?'var(--green-600)':'var(--gold-500)'};">
+      <div class="item-header">
+        <div class="item-title">📦 Pedido #${String(p.id).slice(-4)}</div>
+        <span class="pill ${p.estadoPago==='pagado'?'pill-green':'pill-gold'}">
+          ${p.estadoPago==='pagado'?'✅ Pagado':'⏳ Pendiente'}
+        </span>
+      </div>
+      <div class="item-sub">
+        👨‍🌾 ${p.productorNombre} · ${p.cantidad} arrobas<br>
+        💰 Total: <strong>$${p.total.toLocaleString()}</strong><br>
+        🗓 ${p.fecha}${p.comprador?' · 🏪 '+p.comprador:''}
+      </div>
+    </div>`).join('');
+}
+
+function renderSelects() {
+  // productor
+  const sp = document.getElementById('ofertaProductor');
+  if (sp) sp.innerHTML = '<option value="">Seleccionar productor…</option>'
+    + productores.map(p => `<option value="${p.id}">${p.nombre} — ${p.finca}</option>`).join('');
+  // oferta
+  const so = document.getElementById('pedidoOferta');
+  if (so) {
+    const activas = ofertas.filter(o => o.estado === 'activa');
+    so.innerHTML = '<option value="">Seleccionar oferta…</option>'
+      + activas.map(o => `<option value="${o.id}">${o.productorNombre} · ${o.cantidad} arrobas · $${o.precio.toLocaleString()}/arroba</option>`).join('');
+  }
+  // pago
+  const spg = document.getElementById('pagoPedido');
+  if (spg) {
+    const pend = pedidos.filter(p => p.estadoPago === 'pendiente');
+    spg.innerHTML = '<option value="">Seleccionar pedido…</option>'
+      + pend.map(p => `<option value="${p.id}">Pedido #${String(p.id).slice(-4)} — $${p.total.toLocaleString()} — ${p.productorNombre}</option>`).join('');
+    spg.onchange = updatePaymentCard;
+  }
+}
+
+function renderEstadisticas() {
+  document.getElementById('statsProductores').textContent = productores.length;
+  document.getElementById('statsOfertas').textContent = ofertas.filter(o=>o.estado==='activa').length;
+  document.getElementById('statsPedidos').textContent = pedidos.length;
+  document.getElementById('statsPagados').textContent = pedidos.filter(p=>p.estadoPago==='pagado').length;
+}
+
+function renderUltimasOfertas() {
+  const c = document.getElementById('ultimasOfertas');
+  if (!c) return;
+  const ult = ofertas.slice(-3).reverse();
+  if (ult.length === 0) { c.innerHTML = emptyState('No hay ofertas recientes'); return; }
+  c.innerHTML = ult.map(o => `
+    <div class="item-card">
+      <div class="item-header">
+        <div class="item-title">🧅 ${o.productorNombre}</div>
+        <span class="price-tag">$${o.precio.toLocaleString()}/arr.</span>
+      </div>
+      <div class="item-sub">${o.cantidad} arrobas · ${o.descripcion}</div>
+    </div>`).join('');
+}
+
+function renderPagos() {
+  const c = document.getElementById('listaPagos');
+  if (!c) return;
+  const pagados = pedidos.filter(p => p.estadoPago === 'pagado');
+  if (pagados.length === 0) { c.innerHTML = emptyState('No hay pagos realizados'); return; }
+  c.innerHTML = [...pagados].reverse().map(p => `
+    <div class="item-card" style="border-left-color:var(--green-600);">
+      <div class="item-header">
+        <div class="item-title">✅ Pedido #${String(p.id).slice(-4)}</div>
+        <span class="pill pill-green">Pagado</span>
+      </div>
+      <div class="item-sub">
+        👨‍🌾 ${p.productorNombre} · 💰 $${p.total.toLocaleString()}<br>
+        📅 ${p.fecha}
+      </div>
+    </div>`).join('');
+}
+
+function emptyState(msg) {
+  return `<div class="empty-state"><div class="empty-icon">📭</div><p>${msg}</p></div>`;
+}
+
+function updatePaymentCard() {
+  const sel = document.getElementById('pagoPedido');
+  const id = sel?.value;
+  const ped = pedidos.find(p => p.id == id);
+  document.getElementById('pagoProductorLabel').textContent = ped ? ped.productorNombre : '—';
+  document.getElementById('pagoTotalLabel').textContent = ped ? '$' + ped.total.toLocaleString() : '$0';
+}
+
+// ═══════════════════════════════════════════
+//  ACTIONS
+// ═══════════════════════════════════════════
+function registrarProductor() {
+  const nombre = document.getElementById('regNombre').value.trim();
+  const finca  = document.getElementById('regFinca').value.trim();
+  const vereda = document.getElementById('regVereda').value;
+  const tel    = document.getElementById('regTelefono').value.trim();
+  const ha     = document.getElementById('regHectareas').value;
+  if (!nombre || !finca) { showToast('Nombre y finca son obligatorios', 'error'); return; }
+  productores.push({ id:Date.now(), nombre, finca, vereda, telefono:tel, hectareas:parseFloat(ha)||0 });
+  saveData(); renderAll();
+  ['regNombre','regFinca','regTelefono','regHectareas'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('regVereda').value='';
+  showToast(`Productor "${nombre}" registrado exitosamente`);
+}
+
+function publicarOferta() {
+  const prodId   = document.getElementById('ofertaProductor').value;
+  const cantidad = parseInt(document.getElementById('ofertaCantidad').value);
+  const precio   = parseInt(document.getElementById('ofertaPrecio').value);
+  const desc     = document.getElementById('ofertaDesc').value;
+  const entrega  = document.getElementById('ofertaEntrega').value;
+  if (!prodId || !cantidad || !precio) { showToast('Complete todos los campos de la oferta', 'error'); return; }
+  const prod = productores.find(p => p.id == prodId);
+  if (!prod) return;
+  ofertas.push({
+    id: Date.now(), productorId: prod.id, productorNombre: prod.nombre,
+    cantidad, precio, descripcion: desc || 'Cebolla larga de calidad — Aquitania',
+    estado: 'activa', entrega, fecha: new Date().toLocaleDateString('es-CO')
+  });
+  saveData(); renderAll();
+  ['ofertaCantidad','ofertaPrecio','ofertaDesc'].forEach(id => document.getElementById(id).value='');
+  showToast(`Oferta publicada: ${cantidad} arrobas a $${precio.toLocaleString()}`);
+}
+
+function realizarPedido() {
+  const ofId   = document.getElementById('pedidoOferta').value;
+  const cant   = parseInt(document.getElementById('pedidoCantidad').value);
+  const comp   = document.getElementById('pedidoComprador').value.trim();
+  if (!ofId || !cant) { showToast('Seleccione oferta y cantidad', 'error'); return; }
+  const of = ofertas.find(o => o.id == ofId);
+  if (!of || of.estado !== 'activa') { showToast('Oferta no válida', 'error'); return; }
+  if (cant > of.cantidad) { showToast(`Stock insuficiente. Disponible: ${of.cantidad} arrobas`, 'error'); return; }
+  const total = cant * of.precio;
+  pedidos.push({
+    id: Date.now(), ofertaId: of.id, productorId: of.productorId,
+    productorNombre: of.productorNombre, cantidad: cant,
+    precioUnitario: of.precio, total,
+    fecha: new Date().toLocaleDateString('es-CO'),
+    estadoPago: 'pendiente', comprador: comp
+  });
+  of.cantidad -= cant;
+  if (of.cantidad === 0) of.estado = 'agotada';
+  saveData(); renderAll();
+  document.getElementById('pedidoCantidad').value='';
+  document.getElementById('pedidoComprador').value='';
+  showToast(`Pedido confirmado por $${total.toLocaleString()} COP`);
+}
+
+function simularPago() {
+  const id = document.getElementById('pagoPedido').value;
+  const metodo = document.getElementById('pagoMetodo').value;
+  if (!id) { showToast('Seleccione un pedido para pagar', 'error'); return; }
+  const ped = pedidos.find(p => p.id == id);
+  if (!ped || ped.estadoPago === 'pagado') { showToast('Pedido ya pagado o no encontrado', 'error'); return; }
+  ped.estadoPago = 'pagado'; ped.metodoPago = metodo;
+  saveData(); renderAll();
+  const mLabel = {nequi:'Nequi',daviplata:'Daviplata',transferencia:'Transferencia bancaria',efectivo:'Efectivo'}[metodo]||metodo;
+  document.getElementById('mensajePago').innerHTML = `
+    <div style="background:var(--green-100); border:1px solid var(--green-200); border-radius:var(--radius-sm); padding:16px; display:flex; gap:12px; align-items:center;">
+      <span style="font-size:1.5rem;">✅</span>
+      <div><strong>¡Pago simulado exitoso!</strong><br><span style="font-size:.8rem; color:var(--text-muted);">Método: ${mLabel} · Total: $${ped.total.toLocaleString()}</span></div>
+    </div>`;
+  setTimeout(() => document.getElementById('mensajePago').innerHTML='', 4000);
+  showToast('Pago procesado — el productor recibirá el dinero directamente');
+}
+
+// ═══════════════════════════════════════════
+//  QUIZ
+// ═══════════════════════════════════════════
+function selectQuiz(el, val) {
+  document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedQuizAnswer = val;
+}
+
+function evaluarQuiz() {
+  if (!selectedQuizAnswer) { showToast('Selecciona una respuesta primero', 'error'); return; }
+  const opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(o => o.onclick=null);
+  opts[1].classList.add('correct'); // B is correct
+  if (selectedQuizAnswer !== 'b') opts[['a','b','c','d'].indexOf(selectedQuizAnswer)].classList.add('wrong');
+  const res = document.getElementById('resultadoQuiz');
+  if (selectedQuizAnswer === 'b') {
+    res.innerHTML=`<div style="background:var(--green-100);border:1px solid var(--green-200);border-radius:var(--radius-sm);padding:14px;display:flex;gap:10px;align-items:center;">
+      <span style="font-size:1.3rem;">🎉</span><div><strong>¡Correcto!</strong><br><span style="font-size:.8rem;color:var(--text-muted);">Eliminar intermediarios y garantizar precios justos es el beneficio clave de AGROCONNECT.</span></div></div>`;
+    showToast('¡Respuesta correcta! Módulo completado');
+  } else {
+    res.innerHTML=`<div style="background:var(--terra-100);border:1px solid #f0b8a0;border-radius:var(--radius-sm);padding:14px;display:flex;gap:10px;align-items:center;">
+      <span style="font-size:1.3rem;">📚</span><div><strong>Inténtalo de nuevo</strong><br><span style="font-size:.8rem;color:var(--text-muted);">Revisa el Módulo 1 y 2 de capacitación. La respuesta correcta es B.</span></div></div>`;
+  }
+}
+
+// ═══════════════════════════════════════════
+//  NAVIGATION HELPERS
+// ═══════════════════════════════════════════
+function goToPedido(ofertaId) {
+  switchPanel('pedidos');
+  setTimeout(() => {
+    const sel = document.getElementById('pedidoOferta');
+    if (sel) sel.value = ofertaId;
+  }, 100);
+}
+
+function switchPanel(panelId) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active-panel'));
+  const target = document.getElementById(`panel-${panelId}`);
+  if (target) target.classList.add('active-panel');
+  document.querySelectorAll('.nav-tab').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('data-panel') === panelId);
+  });
+  renderAll();
+}
+
+// ═══════════════════════════════════════════
+//  PEDIDO RESUMEN EN TIEMPO REAL
+// ═══════════════════════════════════════════
+function bindPedidoResumen() {
+  const sel = document.getElementById('pedidoOferta');
+  const qty = document.getElementById('pedidoCantidad');
+  if (!sel || !qty) return;
+  function update() {
+    const of = ofertas.find(o => o.id == sel.value);
+    const cant = parseInt(qty.value);
+    const res = document.getElementById('pedidoResumen');
+    if (of && cant > 0) {
+      const total = cant * of.precio;
+      document.getElementById('pedidoResumenText').textContent =
+        `${cant} arrobas × $${of.precio.toLocaleString()} = $${total.toLocaleString()} COP`;
+      res.style.display='flex';
+    } else { res.style.display='none'; }
+  }
+  sel.onchange=update; qty.oninput=update;
+}
+
+// ═══════════════════════════════════════════
+//  AUTH
+// ═══════════════════════════════════════════
+function login() {
+  const user = document.getElementById('loginUser').value.trim();
+  const err  = document.getElementById('loginError');
+  if (!user) { err.textContent='Ingresa un nombre de usuario'; return; }
+  currentUser = { name: user };
+  document.getElementById('userNameDisplay').textContent = user;
+  document.getElementById('userAvatar').textContent = user.charAt(0).toUpperCase();
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('app').style.display='flex';
+  loadData(); renderAll();
+  setTimeout(bindPedidoResumen, 200);
+}
+
+function logout() {
+  currentUser=null;
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('app').style.display='none';
+  document.getElementById('loginUser').value='';
+  document.getElementById('loginPass').value='';
+  document.getElementById('loginError').textContent='';
+}
+
+// ═══════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('btnLogin').addEventListener('click', login);
+  document.getElementById('loginPass').addEventListener('keydown', e => { if(e.key==='Enter') login(); });
+  document.getElementById('logoutBtn').addEventListener('click', logout);
+  document.getElementById('btnRegistrar').addEventListener('click', registrarProductor);
+  document.getElementById('btnPublicarOferta').addEventListener('click', publicarOferta);
+  document.getElementById('btnHacerPedido').addEventListener('click', realizarPedido);
+  document.getElementById('btnSimularPago').addEventListener('click', simularPago);
+  document.getElementById('btnEvaluar').addEventListener('click', evaluarQuiz);
+
+  document.querySelectorAll('.nav-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      switchPanel(btn.getAttribute('data-panel'));
+    });
+  });
+
+  document.getElementById('app').style.display='none';
+  loadData();
+});
+</script>
+</body>
+</html>
